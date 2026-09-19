@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 4 of 6. Why image models cannot spell, on mechanism: the text encoder never sees letters. Three vendors admit it in their own docs. So every character of type is set by hand, and a bench reads your brief for the eleven characters that would break it.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="The lettering law - learn AI illustration with phoebe">
+<meta property="og:description" content="Session 4 of 6. Text accuracy went from under 20% to nearly 90% only when researchers replaced the encoder. That is not a prompt problem. Refuse the lettering, reserve the zone, set the type.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-ai-illustration-with-phoebe/courses/04-the-lettering-law.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-ai-illustration-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The lettering law - learn AI illustration with phoebe">
+<meta name="twitter:description" content="Session 4 of 6. Why models cannot spell, on mechanism; the brief bench and the style-words trap.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-ai-illustration-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 4 · The lettering law - learn AI illustration with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-illustration-with-phoebe</a> / Session 4 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI Illustration with Phoebe · Session 4 of 6</div>
+    <h1>The lettering <span class="accent">law</span></h1>
+    <p class="sub">Every image model misspells. People treat it as a quality problem that the next version will fix, and write "with the words AUTUMN ROAST in elegant lettering" one more time. It is not a quality problem. The text encoder that reads your prompt was never shown a letter; it was shown tokens, and a token is not a glyph. Researchers got text accuracy from under twenty percent to nearly ninety, and they did it by replacing the encoder, not the prompt. Tonight is that mechanism, the three vendors who say so in their own documentation, the rule that follows, and a bench that reads your brief for the eleven characters that would break it.</p>
+    <div class="chip-row">
+      <span class="chip level">🔴 Bench night</span>
+      <span class="chip audience">Laptop, not paper</span>
+      <span class="chip audience">Bring your control sheet and a real prompt</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:3">3-14 · The mechanism, the admissions, the law</span>
+      <span class="a3" style="flex:6">14-40 · The bench: six briefs, then yours</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">Sessions 1 to 3 built the picture: a dated version, a reference kit, six sentences of style, a composition with an empty third. Daybreak's sleeve is the asset that tests whether any of that was serious, because it carries an origin claim that a lawyer signed word for word, and a model that gets one character wrong has printed a false claim on four thousand bags. Tonight is why that character will be wrong, eventually and unpredictably, and what to do instead.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A brief for one real asset that the bench grades "concept before art, type kept out", the two clauses that got it there, and the mechanism argument in two sentences for the colleague who says the next model will fix it.</p>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Every number on the bench is counted in the words of your brief</strong> against a fixed lexicon you can read in the source: four kinds of concrete anchor, ten families of style word and the six pairs among them that contradict, the characters inside quotation marks, and the presence of a refusal clause and a type zone. Nothing is generated; the bench sees what the model sees, which is the text. The one thing that is not a count is the verdict, and it wears a badge saying so.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers the mechanism</span>
+      <h2>The encoder never saw a letter</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">A text-to-image model has two halves. The half that reads your prompt turns it into a list of numbers, and it does so by splitting the text into tokens, which are chunks of characters chosen for how often they occur, not for what they look like. "Autumn" might be one token or two. The half that paints has to turn that token into six glyphs in order, and nothing in the token tells it what the glyphs are.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The word Autumn Roast shown on the left as three token chunks the encoder sees, and on the right as eleven separate glyph boxes the painter must produce in order, with the gap between them labelled as the place spelling fails">
+        <style>
+          .i4aH { font: 800 12px Inter, sans-serif; fill: #352B6B; }
+          .i4aT { font: 800 14px ui-monospace, Menlo, monospace; fill: #FFFFFF; }
+          .i4aG { font: 800 16px Inter, sans-serif; fill: #352B6B; }
+          .i4aB { font: 400 11px Inter, sans-serif; fill: #1F1B33; }
+          .i4aN { font: 400 11px Inter, sans-serif; fill: #625C7A; }
+          .i4aS { font: 700 11px Inter, sans-serif; fill: #8A3220; }
+          .i4aE { fill: none; stroke: #C2492F; stroke-width: 1.6; stroke-dasharray: 4 3; }
+        </style>
+        <defs>
+          <marker id="i4a-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#C2492F"/>
+          </marker>
+        </defs>
+
+        <text class="i4aH" x="30" y="30">WHAT THE ENCODER SEES</text>
+        <text class="i4aN" x="30" y="48">tokens: chunks chosen by frequency, each one a number</text>
+        <rect x="30" y="66" width="90" height="40" rx="8" fill="#352B6B"/>
+        <text class="i4aT" x="75" y="92" text-anchor="middle">Aut</text>
+        <rect x="128" y="66" width="90" height="40" rx="8" fill="#4C3F91"/>
+        <text class="i4aT" x="173" y="92" text-anchor="middle">umn</text>
+        <rect x="226" y="66" width="100" height="40" rx="8" fill="#5F52A8"/>
+        <text class="i4aT" x="276" y="92" text-anchor="middle">Roast</text>
+        <text class="i4aN" x="30" y="128">id 21473</text>
+        <text class="i4aN" x="128" y="128">id 8830</text>
+        <text class="i4aN" x="226" y="128">id 2216</text>
+        <text class="i4aB" x="30" y="156">Three numbers. Nothing in 8830 says it ends in an n,</text>
+        <text class="i4aB" x="30" y="172">or that it has three letters, or what an n looks like.</text>
+
+        <path class="i4aE" d="M340 86 L470 86" marker-end="url(#i4a-arr)"/>
+        <text class="i4aS" x="405" y="72" text-anchor="middle">the gap</text>
+        <text class="i4aN" x="405" y="110" text-anchor="middle">predict glyphs</text>
+        <text class="i4aN" x="405" y="124" text-anchor="middle">from numbers</text>
+
+        <text class="i4aH" x="490" y="30">WHAT THE PAINTER MUST PRODUCE</text>
+        <text class="i4aN" x="490" y="48">eleven glyphs, in order, each with a shape</text>
+        <rect x="490" y="66" width="30" height="40" rx="5" fill="#FFFFFF" stroke="#CBC5E8"/><text class="i4aG" x="505" y="94" text-anchor="middle">A</text>
+        <rect x="524" y="66" width="30" height="40" rx="5" fill="#FFFFFF" stroke="#CBC5E8"/><text class="i4aG" x="539" y="94" text-anchor="middle">u</text>
+        <rect x="558" y="66" width="30" height="40" rx="5" fill="#FFFFFF" stroke="#CBC5E8"/><text class="i4aG" x="573" y="94" text-anchor="middle">t</text>
+        <rect x="592" y="66" width="30" height="40" rx="5" fill="#FFFFFF" stroke="#CBC5E8"/><text class="i4aG" x="607" y="94" text-anchor="middle">u</text>
+        <rect x="626" y="66" width="30" height="40" rx="5" fill="#FFFFFF" stroke="#CBC5E8"/><text class="i4aG" x="641" y="94" text-anchor="middle">m</text>
+        <rect x="660" y="66" width="30" height="40" rx="5" fill="#F9E6E1" stroke="#C2492F"/><text class="i4aG" x="675" y="94" text-anchor="middle">n</text>
+        <rect x="704" y="66" width="30" height="40" rx="5" fill="#FFFFFF" stroke="#CBC5E8"/><text class="i4aG" x="719" y="94" text-anchor="middle">R</text>
+        <rect x="738" y="66" width="30" height="40" rx="5" fill="#FFFFFF" stroke="#CBC5E8"/><text class="i4aG" x="753" y="94" text-anchor="middle">o</text>
+        <rect x="772" y="66" width="30" height="40" rx="5" fill="#FFFFFF" stroke="#CBC5E8"/><text class="i4aG" x="787" y="94" text-anchor="middle">a</text>
+        <rect x="806" y="66" width="30" height="40" rx="5" fill="#F9E6E1" stroke="#C2492F"/><text class="i4aG" x="821" y="94" text-anchor="middle">s</text>
+        <text class="i4aN" x="850" y="94">t</text>
+        <text class="i4aB" x="490" y="156">The coral boxes are where it goes: a doubled letter, a</text>
+        <text class="i4aB" x="490" y="172">dropped one, a shape that is nearly an s. Unpredictably.</text>
+
+        <line x1="30" y1="196" x2="850" y2="196" stroke="#E3DFEF"/>
+        <text class="i4aH" x="30" y="222">HOW IT WAS ACTUALLY FIXED, IN THE RESEARCH</text>
+        <rect x="30" y="236" width="400" height="60" rx="9" fill="#EFECF8"/>
+        <text class="i4aB" x="46" y="258">Character-aware encoders: 30+ point gains on rare words</text>
+        <text class="i4aN" x="46" y="276">Liu et al., ACL 2023: models "lack character-level input features"</text>
+        <rect x="450" y="236" width="400" height="60" rx="9" fill="#EFECF8"/>
+        <text class="i4aB" x="466" y="258">Glyph-ByT5: text accuracy under 20% to nearly 90%</text>
+        <text class="i4aN" x="466" y="276">ECCV 2024: only after fine-tuning a byte-level encoder on glyphs</text>
+
+        <rect x="30" y="316" width="14" height="14" rx="3" fill="#C2492F"/>
+        <text class="i4aN" x="52" y="327">Both fixes change the encoder. Neither is a prompt. A capability the encoder lacks cannot be typed into it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the gap in the middle is the whole problem, and it is a property of the architecture, not of the version</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Why "prompt harder" cannot work, in two sentences<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>First sentence:</strong> the encoders in the popular text-to-image models "lack character-level input features, making it much harder to predict a word's visual makeup as a series of glyphs." That is Liu and colleagues at Google Research (ACL 2023), and their character-aware variants beat the character-blind ones by more than thirty points on rare words. <strong>Second sentence:</strong> when Glyph-ByT5 (ECCV 2024) pushed design-benchmark text accuracy from under twenty percent to nearly ninety, it did so by fine-tuning a byte-level text encoder on glyph-aligned data. The two requirements they name are "character awareness and alignment with glyphs." Both are properties of the encoder.</p>
+        <p>So a model whose encoder is token-based cannot be prompted into reliable lettering, for the same reason you cannot be talked into seeing ultraviolet. The competence has to be trained in. Until a vendor tells you, in the documentation and not the launch post, that it has changed the encoder, every word you ask it to spell is a coin it will eventually drop. On four thousand printed bags, eventually is the operative word.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Three vendors' own words, and the one counter-claim<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Read on 18 September 2026, from the documentation pages and nowhere else.</p>
+        <ul>
+          <li><strong>OpenAI</strong>, image generation guide: the model "can still struggle with precise text placement and clarity", and with "placing elements precisely in structured or layout-sensitive compositions." Two admissions in one guide, one about type and one about layout.</li>
+          <li><strong>Ideogram</strong>, whose entire pitch is typography, on its text-and-typography page: accuracy is best in English and non-Latin scripts "often produce unpredictable results"; longer text raises "spelling errors, distortions, or incomplete words"; and, decisively: "consider using Ideogram to generate the visual concept and then add the text manually using graphic editing tools afterward." The typography vendor recommends setting the type yourself.</li>
+          <li><strong>Midjourney</strong>: the Parameter List, Version, Style Reference, Edit Model, Omni Reference and Terms pages make no claim about rendering type and list no text control. That silence is taught as an absence, not a quote, and it is the most honest position of the three.</li>
+          <li><strong>Google</strong> is the counter-claim: the Gemini image docs promise "legible, stylized text for infographics, menus, diagrams, and marketing assets." Read it carefully. Legible is not spell-correct, it is not your brand's typeface, it is not an exact string, and it is not editable afterwards. If the claim is true it moves the failure rate; it does not move the six properties in Part 2.</li>
+        </ul>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Daybreak's spring sleeve went to a printer with "SINGLE ORGIN" on it. It had passed three people, because a rendered word at 11 point on a proof looks like a word. The reprint cost more than the design. The origin claim is the one string on the bag that a lawyer signed, and the model had changed it by one letter.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers the law</span>
+      <h2>Refuse the lettering, reserve the zone, set the type</h2>
+      <span class="tag concept">4 min live</span>
+    </div>
+    <p class="lede">The rule follows from the mechanism, and it has three clauses. The model paints the picture and is told, explicitly, to paint no letters. The composition leaves a zone empty for the type. The type is set afterwards, in HTML or SVG, by a person. The result is one asset in two layers, and only the top layer has words in it.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An asset shown as two stacked layers: a raster picture layer with no text and an empty upper third, and a type layer above it carrying the headline, with six properties of hand-set type listed beside the stack">
+        <style>
+          .i4bH { font: 800 12px Inter, sans-serif; fill: #352B6B; }
+          .i4bT { font: 800 11.5px Inter, sans-serif; fill: #FFFFFF; }
+          .i4bB { font: 400 11px Inter, sans-serif; fill: #1F1B33; }
+          .i4bN { font: 400 11px Inter, sans-serif; fill: #625C7A; }
+          .i4bK { font: 700 11px Inter, sans-serif; fill: #352B6B; }
+          .i4bZ { fill: #F9E6E1; stroke: #C2492F; stroke-width: 1.2; stroke-dasharray: 4 3; }
+          .i4bY { font: 800 15px Inter, sans-serif; fill: #352B6B; letter-spacing: .04em; }
+        </style>
+
+        <text class="i4bH" x="30" y="30">LAYER 2 · TYPE, SET BY HAND</text>
+        <rect x="30" y="44" width="380" height="90" rx="10" fill="#FFFFFF" stroke="#CBC5E8"/>
+        <text class="i4bY" x="220" y="82" text-anchor="middle">AUTUMN ROAST</text>
+        <text class="i4bN" x="220" y="104" text-anchor="middle">Single origin, Sidamo. Legal-approved string, HTML.</text>
+        <text class="i4bN" x="30" y="152">exact characters · brand typeface · a person set it</text>
+
+        <text class="i4bH" x="30" y="184">LAYER 1 · PICTURE, ALL LETTERING REFUSED</text>
+        <rect x="30" y="198" width="380" height="140" rx="10" fill="#5F52A8"/>
+        <rect class="i4bZ" x="42" y="208" width="356" height="40"/>
+        <text class="i4bN" x="220" y="233" text-anchor="middle" fill="#8A3220">type zone: empty by instruction</text>
+        <ellipse cx="220" cy="300" rx="52" ry="22" fill="#352B6B"/>
+        <rect x="150" y="318" width="140" height="10" rx="3" fill="#CBC5E8"/>
+        <circle cx="130" cy="316" r="5" fill="#CBC5E8"/>
+        <circle cx="308" cy="316" r="5" fill="#CBC5E8"/>
+        <text class="i4bT" x="46" y="330">mug · counter · light · grain</text>
+
+        <text class="i4bH" x="460" y="30">WHAT HAND-SET TYPE IS THAT RENDERED TYPE IS NOT</text>
+        <rect x="460" y="44" width="390" height="40" rx="8" fill="#EFECF8"/>
+        <text class="i4bK" x="476" y="61">Spell-correct by construction</text>
+        <text class="i4bN" x="476" y="76">the string is the string; nothing predicted it</text>
+        <rect x="460" y="92" width="390" height="40" rx="8" fill="#EFECF8"/>
+        <text class="i4bK" x="476" y="109">Editable</text>
+        <text class="i4bN" x="476" y="124">legal changes one word, nothing is regenerated</text>
+        <rect x="460" y="140" width="390" height="40" rx="8" fill="#EFECF8"/>
+        <text class="i4bK" x="476" y="157">Translatable</text>
+        <text class="i4bN" x="476" y="172">six markets, one picture, six type layers</text>
+        <rect x="460" y="188" width="390" height="40" rx="8" fill="#EFECF8"/>
+        <text class="i4bK" x="476" y="205">Selectable and searchable</text>
+        <text class="i4bN" x="476" y="220">a reader can copy it; a search engine can find it</text>
+        <rect x="460" y="236" width="390" height="40" rx="8" fill="#EFECF8"/>
+        <text class="i4bK" x="476" y="253">Accessible</text>
+        <text class="i4bN" x="476" y="268">a screen reader reads text; it cannot read a picture of text</text>
+        <rect x="460" y="284" width="390" height="40" rx="8" fill="#EFECF8"/>
+        <text class="i4bK" x="476" y="301">Yours to arrange</text>
+        <text class="i4bN" x="476" y="316">the arrangement is a human choice, and it is on record</text>
+
+        <rect x="30" y="344" width="14" height="14" rx="3" fill="#C2492F"/>
+        <text class="i4bN" x="52" y="355">Rendered lettering has none of these six even when it happens to be spelled right. That is the law, and it is not about quality.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the dashed rectangle in the picture layer is the only instruction about type the model ever receives: leave this empty</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The two clauses, ready to paste<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Two sentences at the end of every brief, before the ratio. They are the difference between the fourth and fifth rungs on the bench below.</p>
+        <div class="prompt-box good">
+          <span class="label">Refusal and zone</span>
+          <pre>No text, no lettering, no logo anywhere in the image.
+Keep the upper third as quiet negative space; the headline is set later in HTML.</pre>
+        </div>
+        <p>The first clause is a negative constraint, and negative constraints persuade rather than bind, so it will occasionally be ignored; when it is, the asset is rejected on sight and regenerated, which costs a minute. The second clause is a composition instruction, which the reference kit from session 2 can reinforce with a composition reference that has an empty third. Together they mean the model is never asked to spell, so it never spells wrong, and the only spelling on the asset is the string a person typed.</p>
+        <div class="prompt-box bad">
+          <span class="label">The request that fails eventually</span>
+          <pre>... with the title "Autumn Roast" in elegant lettering across the top.</pre>
+        </div>
+        <p>Eleven characters, and the bench grades the whole brief red for them. Not because the picture would be worse, but because the encoder cannot be trusted with them and the fix does not live in the prompt.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why the composite is the illustration, not a workaround<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Two-layer assets are how print and web illustration have always worked. A magazine cover is a photograph and a type layer. A poster is an image and a typeset headline. Nobody asks the photographer to also paint the masthead. The model is the photographer here, and asking it to letter is asking the wrong craftsperson. The composite is not a patch for a weak model; it is the ordinary structure of a finished piece, and it is the structure that keeps every downstream job (translation, legal edits, accessibility, search) possible.</p>
+        <p>There is a second reason, which session 5 carries in one card: a picture where a person chose the composition, refused the lettering, set the type and arranged the layers is a picture with a documented human contribution in it. A picture that is one prompt and one PNG is not. The two-layer asset is the version that can be shown to have been made by someone.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">The bench</span>
+      <h2>One asset, six briefs, one trap</h2>
+      <span class="tag demo">★ 26 min · everyone drives</span>
+    </div>
+    <p class="lede">Six briefs for Daybreak's email hero. Load them in order, read the eight counts before the verdict, then paste in a prompt you have actually used. The bench works on whatever is in the box.</p>
+
+    <div class="mb-wrap">
+      <h4>The brief bench</h4>
+      <p class="mb-intro">Every number except the verdict is counted in the text of the brief against a fixed lexicon: anchors, style families, contradictions, quoted characters, refusal, zone, ratio, references. Edit the brief and the numbers follow.</p>
+      <div id="brief-bench"></div>
+    </div>
+
+    <p>The ladder below was read off this bench in a browser before this page was written. Load the presets in the same order and you will get the same numbers, because they come from the same counting.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Verified ladder of the six bench presets with anchors, style words, conflicts, lettering characters, refusal, zone and the verdict for each">
+        <style>
+          .i4cH { font: 800 11.5px Inter, sans-serif; fill: #352B6B; }
+          .i4cB { font: 400 11.5px Inter, sans-serif; fill: #1F1B33; }
+          .i4cS { font: 800 11.5px Inter, sans-serif; fill: #8A3220; }
+          .i4cN { font: 400 11px Inter, sans-serif; fill: #625C7A; }
+        </style>
+        <text class="i4cH" x="34" y="26">Brief</text>
+        <text class="i4cH" x="290" y="26">Anchors</text>
+        <text class="i4cH" x="360" y="26">Style</text>
+        <text class="i4cH" x="420" y="26">Conflicts</text>
+        <text class="i4cH" x="500" y="26">Lettering</text>
+        <text class="i4cH" x="580" y="26">Refused</text>
+        <text class="i4cH" x="650" y="26">Zone</text>
+        <text class="i4cH" x="700" y="26">Verdict</text>
+        <line x1="34" y1="36" x2="846" y2="36" stroke="#E3DFEF"/>
+
+        <text class="i4cB" x="34" y="60">The first prompt</text>
+        <text class="i4cS" x="290" y="60">0</text>
+        <text class="i4cB" x="360" y="60">7</text>
+        <text class="i4cB" x="420" y="60">0</text>
+        <text class="i4cB" x="500" y="60">0</text>
+        <text class="i4cB" x="580" y="60">no</text>
+        <text class="i4cB" x="650" y="60">no</text>
+        <text class="i4cB" x="700" y="60">Pretty, but whose?</text>
+
+        <text class="i4cB" x="34" y="88">Concept before art</text>
+        <text class="i4cS" x="290" y="88">15</text>
+        <text class="i4cB" x="360" y="88">2</text>
+        <text class="i4cB" x="420" y="88">0</text>
+        <text class="i4cB" x="500" y="88">0</text>
+        <text class="i4cB" x="580" y="88">no</text>
+        <text class="i4cB" x="650" y="88">no</text>
+        <text class="i4cB" x="700" y="88">A real picture, no plan for type</text>
+
+        <text class="i4cB" x="34" y="116">With the title spelled in</text>
+        <text class="i4cB" x="290" y="116">16</text>
+        <text class="i4cB" x="360" y="116">3</text>
+        <text class="i4cB" x="420" y="116">0</text>
+        <text class="i4cS" x="500" y="116">11 chars</text>
+        <text class="i4cB" x="580" y="116">no</text>
+        <text class="i4cB" x="650" y="116">no</text>
+        <text class="i4cB" x="700" y="116">Asks the model to spell</text>
+
+        <rect x="24" y="130" width="832" height="30" rx="8" fill="#F9E6E1"/>
+        <text class="i4cS" x="34" y="150">Lettering refused, zone reserved</text>
+        <text class="i4cS" x="290" y="150">16</text>
+        <text class="i4cS" x="360" y="150">2</text>
+        <text class="i4cS" x="420" y="150">0</text>
+        <text class="i4cS" x="500" y="150">0</text>
+        <text class="i4cS" x="580" y="150">yes</text>
+        <text class="i4cS" x="650" y="150">yes</text>
+        <text class="i4cS" x="700" y="150">Concept before art, type kept out</text>
+
+        <text class="i4cB" x="34" y="182">then: more style words</text>
+        <text class="i4cB" x="290" y="182">15</text>
+        <text class="i4cS" x="360" y="182">16</text>
+        <text class="i4cS" x="420" y="182">4</text>
+        <text class="i4cB" x="500" y="182">0</text>
+        <text class="i4cB" x="580" y="182">no</text>
+        <text class="i4cB" x="650" y="182">no</text>
+        <text class="i4cB" x="700" y="182">Style words at war</text>
+
+        <text class="i4cB" x="34" y="210">Wired to the reference kit</text>
+        <text class="i4cB" x="290" y="210">22</text>
+        <text class="i4cB" x="360" y="210">2</text>
+        <text class="i4cB" x="420" y="210">0</text>
+        <text class="i4cB" x="500" y="210">0</text>
+        <text class="i4cB" x="580" y="210">yes</text>
+        <text class="i4cB" x="650" y="210">yes</text>
+        <text class="i4cB" x="700" y="210">Wired to the kit, 4 refs</text>
+
+        <line x1="34" y1="228" x2="846" y2="228" stroke="#E3DFEF"/>
+        <text class="i4cB" x="34" y="254">Seven style words and no anchors is not a brief. Eleven quoted characters are enough to fail. Fourteen more adjectives</text>
+        <text class="i4cB" x="34" y="272">added four contradictions and no picture. The two clauses moved the verdict from amber to good and changed nothing else.</text>
+
+        <rect x="24" y="294" width="14" height="14" rx="3" fill="#C2492F"/>
+        <text class="i4cN" x="46" y="305">Counted 2026-09-19 in a headless browser via the bench's own API, before this page quoted a number.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the coral row is the target; the row below it is what most people do when a picture disappoints, and it is measurably worse</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Read the ladder: it gets worse in two directions<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>The first prompt: seven style words, zero anchors.</strong> "Beautiful", "trending on artstation", "masterpiece", "highly detailed", "8k", "stunning" and "illustration". Every word is about how good the picture should be and not one names an object, a light or a colour. There is no picture here for a model to make; there is a request to be impressed.</li>
+          <li><strong>Concept before art: fifteen anchors, two style words.</strong> A ceramic mug, a worn oak counter, three roasted beans and a green one, morning light from the left, amber and burnt orange and cream, flat vector with paper grain, 3:2. Fifteen things a painter could be wrong about. This is a picture.</li>
+          <li><strong>With the title spelled in: one added line, verdict red.</strong> Eleven characters inside quotation marks, and the brief that was a picture is now also a spelling test the encoder will eventually fail.</li>
+          <li><strong>Refused and reserved: the two clauses.</strong> Same fifteen anchors, same two style words, plus "no text, no lettering, no logo" and an empty upper third. The verdict goes to good. Nothing about the picture changed; what changed is that the model is never asked to do the one thing it cannot.</li>
+          <li><strong>More style words: the trap.</strong> Fourteen adjectives from the prompt guides bolted onto the concept brief. Sixteen style words across seven families, and four of them contradict: flat against photorealistic, flat against watercolour, watercolour against photorealistic, flat against highly detailed. Every anchor is still there. The picture did not get richer. The instruction became incoherent, and an incoherent instruction to a persuading layer is a coin toss per adjective.</li>
+          <li><strong>Wired to the kit: four reference handles.</strong> The refused brief plus the style reference set, its weight, a named asset to match, and a recorded seed with its ninety-nine percent written next to it. The verdict adds "wired to the kit". This is the brief that can be run again next month.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Now yours: paste and read<span class="mini">10 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Paste a prompt you have actually used. Read the eight counts in order: anchors first, because a brief with fewer than five is not describing a picture yet; then style words and conflicts, because most real prompts have three to eight style words and at least one pair at war; then lettering, because most real prompts ask for some.</p>
+        <p>Then fix it in the order the counts suggest. Add anchors until you pass five: a material, a light, a placement, a colour. Cut style words until one family is left. Move every quoted string out of the brief and into a note that says "set in HTML". Add the two clauses. Watch the verdict move, and notice that at no point did you add a quality word.</p>
+        <p>If you finish early, take the concept brief and try to break the anchor count without touching the style words: remove "oak", remove "from the left", remove "3:2". The verdict degrades one step at a time, which is what a count is for.</p>
+      </div>
+    </details>
+
+    <div class="callout tip">
+      <p><strong>The number to bring to session 5.</strong> Your anchors and your reference handles on the best brief. Session 5 is what happens when you run that brief ten times, and the handles are the only part of it that make run seven look like run one.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers honest limits</span>
+      <h2>What the counts can and cannot tell you</h2>
+      <span class="tag concept">3 min live</span>
+    </div>
+    <p class="lede">A bench that only reports what it can count has to be clear about what it cannot. Four limits, on the widget and here.</p>
+
+    <table class="clean">
+      <tr><th>Limit</th><th>What it means for your numbers</th></tr>
+      <tr><td>The brief, not the image</td><td>A perfect brief can still produce a bad picture and the bench will not know. It measures the one input a person fully controls, which is also the one input most people never edit.</td></tr>
+      <tr><td>Lexicon-based</td><td>A style word not on the ten lists is not counted; a colour not on the colour list is not an anchor. The lists are in the source file and are deliberately finite. If your brand's colour is missing, the fix is a word in the list, not a guess.</td></tr>
+      <tr><td>Anchors are counted, not judged</td><td>Twenty anchors that contradict each other still count as twenty. Coherence of the picture is your job; the bench only knows whether you described one.</td></tr>
+      <tr><td>The verdict is a rule of thumb</td><td>Its thresholds (three and five anchors, six style words, two conflicts) are judgement, badged as such. The eight counts above it are not.</td></tr>
+    </table>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why the bench counts words and not pixels<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A course that ships no generated image cannot grade one, and would not want to: a picture is judged by a person with the six sentences from session 2 in hand, and a browser scoring aesthetics would be inventing a number. What a browser can do honestly is read the brief the way the encoder reads it, as text, and count the things in it that are known to go wrong. That is a smaller claim and a true one, and it targets the layer where most people spend all their effort and none of their attention.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Daybreak's designer pasted her real spring prompt into the bench: 61 words, 3 anchors, 9 style words across five families, two conflicts, and the phrase "with our logo in the corner". Red on two counts. She had regenerated it forty times in April. The fix took four minutes and was made entirely by deleting.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before session 5</h2>
+      <span class="tag exercise">25 min</span>
+    </div>
+    <ol>
+      <li><strong>Bench your three most-used prompts</strong> and record anchors, style words, conflicts and lettering for each. Then rewrite the worst one to "concept before art, type kept out" by deleting first and adding anchors second.</li>
+      <li><strong>Find every rendered word in one asset your organisation has shipped</strong> this year. Check each one character by character. Write down how many you found and how many were wrong. Most people find at least one.</li>
+      <li><strong>Set one headline by hand</strong> over any picture, in HTML or in a design tool, and export it. Compare the time taken with the time your last "fix the text" regeneration loop took.</li>
+      <li><strong>Add a "type set by hand" line to your control sheet</strong> for the asset from session 1, naming the exact string and who approves it. Session 5 adds the last column.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 4 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · A colleague says the next model version will fix spelling, so the type can stay in the prompt. What is the accurate reply?</p>
+      <button class="qopt" type="button">A · Agreed; each version is better at text</button>
+      <button class="qopt" type="button">B · Spelling is fixed by writing the word in capitals</button>
+      <button class="qopt" type="button">C · The failure is in the text encoder, which sees tokens and not glyphs; the research that fixed it (under 20% to nearly 90%) replaced the encoder, so until a vendor documents that change, no prompt can supply what the encoder lacks, and the type is set by hand</button>
+      <button class="qopt" type="button">D · Only Midjourney has the problem</button>
+      <p class="qwhy">Liu et al. named the cause: models "lack character-level input features". Glyph-ByT5 named the fix: "character awareness and alignment with glyphs", trained into a byte-level encoder. Both are architecture. OpenAI and Ideogram document the limit in their own guides, and Ideogram tells you to add the text afterwards.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · The "more style words" brief keeps all fifteen anchors and adds fourteen adjectives. Why does the bench grade it worse than the plain concept brief?</p>
+      <button class="qopt" type="button">A · Sixteen style words across seven families produce four contradictions (flat against photorealistic, flat against watercolour, watercolour against photorealistic, flat against highly detailed); the picture did not get richer, the instruction got incoherent, and each contradicted adjective is a coin toss in a persuading layer</button>
+      <button class="qopt" type="button">B · Because long prompts are always worse</button>
+      <button class="qopt" type="button">C · It does not; more style words always help</button>
+      <button class="qopt" type="button">D · Because it forgot the ratio</button>
+      <p class="qwhy">The ratio is still there and so are the anchors. What the bench found is the conflicts, and the conflicts are the reason the same prompt gives a flat picture one run and a photograph the next. Fewer style words in one family is a stronger instruction than many in seven.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">3 · What does hand-set type have that rendered type does not, even when the rendered word happens to be spelled correctly?</p>
+      <button class="qopt" type="button">A · Nothing, if the spelling is right</button>
+      <button class="qopt" type="button">B · It is spell-correct by construction, editable without regeneration, translatable, selectable, searchable and readable by a screen reader, and its arrangement is a documented human choice; a picture of text has none of those six</button>
+      <button class="qopt" type="button">C · It is cheaper to generate</button>
+      <button class="qopt" type="button">D · It looks more professional</button>
+      <p class="qwhy">The law is not about quality. A correctly rendered word is still a picture of a word: legal cannot edit it, a translator cannot swap it, a search engine cannot read it, and a screen reader says "image". Six properties, all downstream jobs, all lost the moment the letters are pixels.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Liu et al., ACL 2023 (arXiv 2212.10562)</span><span class="note">Character-blind encoders; 30+ point gains on rare words with character-aware ones</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Glyph-ByT5, ECCV 2024 (arXiv 2403.09622)</span><span class="note">Under 20% to nearly 90% only after fine-tuning a byte-level encoder on glyph-aligned data</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">OpenAI image guide</span><span class="note">"Can still struggle with precise text placement and clarity"; layout-sensitive compositions</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Ideogram text and typography page</span><span class="note">English-only accuracy, length degrades spelling, "add the text manually... afterward"</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Google Gemini image docs</span><span class="note">The "legible, stylized text" counter-claim, read for what it does and does not promise</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Midjourney documentation</span><span class="note">No text claim and no text parameter across six pages; taught as an absence</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The eight counts</span><span class="note">Computed in assets/il-live.js against a fixed lexicon; verified ladder in the source map</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">"Ideogram 90-95% vs Midjourney 30-40%"</span><span class="note">Widely repeated, no primary benchmark located; not stated</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Full source map with verification tiers and the bench's honest limits: <span class="mono">materials/official-course-map.md</span>.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 4 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Tokens, not glyphs</b><span>The encoder never saw a letter. A capability it lacks cannot be typed in.</span></div>
+      <div class="cheat-item"><b>The fix was the encoder</b><span>Under 20% to nearly 90%, by fine-tuning a byte-level one. Not a prompt.</span></div>
+      <div class="cheat-item"><b>Two clauses</b><span>No text, no lettering, no logo. Keep the upper third empty; type set later.</span></div>
+      <div class="cheat-item"><b>Six properties</b><span>Spell-correct, editable, translatable, selectable, searchable, accessible.</span></div>
+      <div class="cheat-item"><b>Five anchors before one adjective</b><span>Material, light, place, colour, number. Then one style family.</span></div>
+      <div class="cheat-item"><b>More style words, worse brief</b><span>Sixteen across seven families made four contradictions and no picture.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>You have a brief the bench grades good. Session 5 is what happens when you run it ten times: the seed at ninety-nine percent, the style reference by weight, the Edit Model's four images, and the cost ceiling of training your own adapter. Consistency is not a parameter any vendor sells; it is a pipeline, and the control sheet is its first page.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 4 of 6 · learn-ai-illustration-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="03-composition-and-the-type-zone.html">← Prev: Composition and the type zone</a> &nbsp;·&nbsp; <a href="05-consistency-is-a-pipeline.html">Next: Consistency is a pipeline →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+<script src="../assets/il-live.js?v=1"></script>
+</body>
+</html>

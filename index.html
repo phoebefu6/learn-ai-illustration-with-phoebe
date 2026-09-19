@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Six sessions on art-directing an image model instead of prompting one: where control lives, style written down, composition with a zone kept for type, why every character is set by hand, consistency as a pipeline, and when to say no. No generated image anywhere on the site. Free, by Phoebe Fu.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Learn AI Illustration with Phoebe">
+<meta property="og:description" content="A prompt persuades. A ratio binds. A seed is 99 percent. Eleven characters of lettering are enough to fail. Six sessions on the four controls that are not the sentence you type.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-ai-illustration-with-phoebe/">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-ai-illustration-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Learn AI Illustration with Phoebe">
+<meta name="twitter:description" content="Six sessions on art direction with image models, with a bench that reads your brief for the things a generator cannot be told twice.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-ai-illustration-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Learn AI Illustration with Phoebe</title>
+<link rel="stylesheet" href="assets/style.css?v=1">
+<style>
+
+  .stats-row { display: flex; gap: 2.4rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .stat b { display: block; font-size: 2.1rem; font-weight: 800; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .72rem; opacity: .85; text-transform: uppercase; letter-spacing: .09em; font-weight: 600; }
+
+  .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .course-card {
+    border: 1px solid var(--hairline);
+    border-top: 4px solid var(--diff, var(--indigo));
+    border-radius: var(--radius);
+    padding: 1.2rem 1.3rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    text-decoration: none;
+    color: var(--ink);
+    background: #fff;
+    transition: box-shadow .15s ease, border-color .15s ease, transform .15s ease;
+    position: relative;
+  }
+  .course-card:hover { border-color: var(--indigo-soft); border-top-color: var(--diff, var(--indigo)); box-shadow: 0 8px 28px rgba(76,63,145,.14); transform: translateY(-3px); }
+  .course-card .cicon { font-size: 1.7rem; line-height: 1; }
+  .course-card .cnum { font-size: .72rem; font-weight: 700; color: var(--indigo); text-transform: uppercase; letter-spacing: .1em; }
+  .course-card h3 { font-size: 1.05rem; font-weight: 800; line-height: 1.3; }
+  .course-card p { font-size: .85rem; color: var(--muted); flex: 1; }
+  .course-card .meta { display: flex; gap: .4rem; flex-wrap: wrap; }
+
+  .diff-legend { display: flex; gap: 1rem; margin-top: 1.6rem; font-size: .74rem; color: var(--muted); font-weight: 600; flex-wrap: wrap; }
+  .diff-legend i { display: inline-block; width: .85rem; height: .35rem; border-radius: 999px; margin-right: .35rem; vertical-align: middle; }
+
+  .paths { margin-top: 2.6rem; }
+  .paths h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .3rem; }
+  .paths .plede { color: var(--muted); font-size: .92rem; margin-bottom: .8rem; }
+  .path { display: flex; gap: .55rem; align-items: center; padding: .75rem 0; border-bottom: .5px solid var(--hairline); flex-wrap: wrap; }
+  .path:last-child { border-bottom: none; }
+  .path b { min-width: 15.5rem; font-size: .9rem; }
+  .path .pstep { background: var(--indigo-50); color: var(--indigo); border-radius: 999px; padding: .16rem .68rem; font-weight: 700; font-size: .8rem; text-decoration: none; transition: all .12s ease; }
+  .path .pstep:hover { background: var(--indigo); color: #fff; }
+  .path .parr { color: var(--faint); font-weight: 700; }
+
+  .mm-section { margin-top: 1.6rem; }
+  .mm-section h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .2rem; }
+  .mm-section .mm-lede { color: var(--muted); font-size: .92rem; margin-bottom: .4rem; }
+  .mm-wrap { border: 1px solid var(--hairline); border-radius: var(--radius); background: linear-gradient(180deg,#fff,#F5F3FA); padding: .6rem; overflow-x: auto; }
+  .mm-svg { width: 100%; height: auto; display: block; max-width: 60rem; margin: 0 auto; min-width: 34rem; }
+  .mm-link { cursor: pointer; text-decoration: none; }
+  .mm-node rect { transition: opacity .15s ease, filter .15s ease; }
+  .mm-node text { pointer-events: none; }
+  .mm-link:hover .mm-node rect { filter: brightness(1.06); }
+  .mm-edge { transition: opacity .15s ease; }
+
+  .not-this { border: 1px solid var(--hairline); border-left: 4px solid var(--amber); border-radius: var(--radius); background: #fff; padding: 1.1rem 1.3rem; margin-top: 1.2rem; }
+  .not-this h3 { font-size: .95rem; font-weight: 800; margin-bottom: .5rem; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn with Phoebe · Visual Thinking &amp; Storytelling</div>
+    <h1>Learn <span class="accent">AI Illustration</span> with Phoebe</h1>
+    <p class="sub">Most people who make pictures with a model have one control: the sentence they type. The stack has five layers of control and the sentence is the one with the least grip. A ratio binds. A reference binds by weight. A seed is documented at ninety-nine percent. Every word of the prompt persuades. And every character of lettering the model is asked to spell is a coin it will eventually drop, for a reason that lives in the architecture and not in the version. Six sessions on art direction with image models: where control lives, style written down, composition with a zone kept empty for type, the lettering law on mechanism, consistency as a pipeline, and the evidence for when a generated picture should not be used at all.</p>
+    <div class="stats-row">
+      <div class="stat"><b data-count="6">6</b><span>sessions</span></div>
+      <div class="stat"><b data-count="6">6</b><span>assets, one hand</span></div>
+      <div class="stat"><b data-count="99">99</b><span>% what a seed is worth</span></div>
+      <div class="stat"><b data-count="11">11</b><span>characters enough to fail</span></div>
+      <div class="stat"><b data-count="45">45</b><span>min per session</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>The six sessions 🎯 <span style="font-size:.85rem;font-weight:600;color:var(--muted)">· one launch set, six decisions</span></h2>
+      <p class="plede">The running job is <strong>Daybreak's autumn roast launch set</strong>: the coffee-subscription company from the sibling courses needs an email hero, a landing-page header, three social tiles and the printed sleeve, and the six must look like one hand made them. The sleeve carries an origin claim a lawyer signed, which is the first reason no lettering ever comes out of a model here. Every session moves the six assets one decision closer to shipping.</p>
+    </div>
+
+    <div class="course-grid">
+      <a class="course-card" href="courses/01-where-control-lives.html" style="--diff:#FBBF24">
+        <span class="cicon">🎛️</span>
+        <span class="cnum">Session 1 · medium</span>
+        <h3>Where control lives</h3>
+        <p>Five layers of control and one of them is a sentence. Which settings bind, which persuade, the vendor sentences that admit what each cannot do, and a dated control sheet for one asset.</p>
+        <span class="meta"><span class="pill amber">▶ Start here</span></span>
+      </a>
+      <a class="course-card" href="courses/02-style-dna-written-down.html" style="--diff:#FBBF24">
+        <span class="cicon">🧬</span>
+        <span class="cnum">Session 2 · medium</span>
+        <h3>Style DNA, written down</h3>
+        <p>Six sentences a stranger could act on, including the one about what is absent. Three kinds of reference and what each carries, and a kit of four named files with one job each.</p>
+        <span class="meta"><span class="pill">six sentences</span></span>
+      </a>
+      <a class="course-card" href="courses/03-composition-and-the-type-zone.html" style="--diff:#FBBF24">
+        <span class="cicon">🖼️</span>
+        <span class="cnum">Session 3 · medium</span>
+        <h3>Composition and the type zone</h3>
+        <p>Six frames at six ratios, each with a third kept empty. Placement lines written only in words a painter could be wrong about, and the composition reference that carries shape and not colour.</p>
+        <span class="meta"><span class="pill">the empty third</span></span>
+      </a>
+      <a class="course-card" href="courses/04-the-lettering-law.html" style="--diff:#F87171">
+        <span class="cicon">🔤</span>
+        <span class="cnum">Session 4 · bench night</span>
+        <h3>The lettering law</h3>
+        <p>The encoder never saw a letter. The research that fixed spelling replaced the encoder, not the prompt; three vendors admit the limit in their docs. A bench reads your brief for the eleven characters that break it, and the fourteen adjectives that make it worse.</p>
+        <span class="meta"><span class="pill amber">★ the bench</span></span>
+      </a>
+      <a class="course-card" href="courses/05-consistency-is-a-pipeline.html" style="--diff:#FB923C">
+        <span class="cicon">🔁</span>
+        <span class="cnum">Session 5 · hands-on</span>
+        <h3>Consistency is a pipeline</h3>
+        <p>Seed at ninety-nine, style by weight, the Edit Model's four images, the adapter's five GPU hours. No vendor sells identity; the pipeline delivers it, with a person as the last step. One card on rights.</p>
+        <span class="meta"><span class="pill">four handles</span></span>
+      </a>
+      <a class="course-card" href="courses/06-when-it-earns-its-place.html" style="--diff:#FB923C">
+        <span class="cicon">⚖️</span>
+        <span class="cnum">Session 6 · hands-on</span>
+        <h3>When it earns its place</h3>
+        <p>Plus 19 percent clicks while nobody knows; minus 31.5 when they do; a watermark that erodes trust further. The click evidence and the trust evidence side by side, and a rule for saying no. Final scorecard.</p>
+        <span class="meta"><span class="pill amber">🔒 final scorecard</span></span>
+      </a>
+    </div>
+
+    <div class="diff-legend">
+      <span><i style="background:#FBBF24"></i>medium</span>
+      <span><i style="background:#FB923C"></i>hands-on</span>
+      <span><i style="background:#F87171"></i>bench night</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>Your passport 🎫</h2>
+      <p class="plede">Clear all three quiz questions in a session and it gets stamped. Six stamps means you stopped prompting and started art-directing. Stamps live in this browser only.</p>
+    </div>
+    <div class="pp-strip"></div>
+  </section>
+
+  <section class="section">
+    <div class="not-this">
+      <h3>What this course is not, so you land in the right place 🧭</h3>
+      <table class="clean">
+        <tr><th>If your question is</th><th>Go here instead</th></tr>
+        <tr><td>Who owns the output, what is copyrightable, where the court cases stand, what a Content Credential proves?</td><td><span class="mono">learn-ai-design-with-phoebe</span> a4</td></tr>
+        <tr><td>When must generated content be disclosed, and what do the EU dates require?</td><td><span class="mono">learn-ai-media-with-phoebe</span> session 6</td></tr>
+        <tr><td>How do I write a constraint brief for product UI, or use references when drafting screens?</td><td><span class="mono">learn-ai-design-with-phoebe</span> b2 and b7</td></tr>
+        <tr><td>How do I generate on-brand images at marketing volume?</td><td><span class="mono">learn-ai-marketing-with-phoebe</span> b8</td></tr>
+        <tr><td><strong>How do I art-direct an illustration so it is a picture before it is a style, keeps its type out of the model, matches its siblings, and knows when not to exist?</strong></td><td><strong>you are in the right place</strong></td></tr>
+      </table>
+      <p style="margin-top:.7rem;font-size:.86rem;color:var(--muted)"><strong>Session 5 carries one card on rights, the single Copyright Office line the pipeline needs.</strong> Everything else in that territory lives with the two owning courses, because two courses owning one body of law disagree with each other eventually.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="paths">
+      <h2>Choose your path 🗺️</h2>
+      <p class="plede">Three doors into the same conviction: the prompt is the last and weakest of five controls, and art direction is the other four.</p>
+      <div class="path"><b>⏱️ I have an asset due this week</b>
+        <a class="pstep" href="courses/01-where-control-lives.html">1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/03-composition-and-the-type-zone.html">3</a><span class="parr">→</span>
+        <a class="pstep" href="courses/04-the-lettering-law.html">4</a>
+        <span style="font-size:.82rem;color:var(--muted)">the control sheet, the empty third, and a brief the bench grades good</span>
+      </div>
+      <div class="path"><b>🧬 It never looks like us twice</b>
+        <a class="pstep" href="courses/02-style-dna-written-down.html">2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/05-consistency-is-a-pipeline.html">5</a>
+        <span style="font-size:.82rem;color:var(--muted)">style as six sentences, then the four handles and the person at the end</span>
+      </div>
+      <div class="path"><b>🎯 The whole thing</b>
+        <a class="pstep" href="courses/01-where-control-lives.html">1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/02-style-dna-written-down.html">2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/03-composition-and-the-type-zone.html">3</a><span class="parr">→</span>
+        <a class="pstep" href="courses/04-the-lettering-law.html">4</a><span class="parr">→</span>
+        <a class="pstep" href="courses/05-consistency-is-a-pipeline.html">5</a><span class="parr">→</span>
+        <a class="pstep" href="courses/06-when-it-earns-its-place.html">6</a>
+        <span style="font-size:.82rem;color:var(--muted)">from one long prompt to a documented, consistent, defensible set</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>What is honest here 🧾</h2>
+      <p class="plede">The bench in session 4 counts things in the text of a brief against a fixed lexicon you can read in the source. The one-line verdict is a rule of thumb and is labelled as one on the widget. Nothing is generated, anywhere on this site, and the reason is the subject of session 4.</p>
+    </div>
+    <table class="clean">
+      <tr><th>Claim</th><th>Status</th></tr>
+      <tr><td>Anchors, style words, families, conflicts, quoted characters, refusal, zone, ratio, references</td><td><strong>Really counted</strong> in the brief against lexicons in <span class="mono">assets/il-live.js</span>; the lists are finite and deliberately so</td></tr>
+      <tr><td>The verdict line</td><td><strong>A heuristic,</strong> labelled as one on the widget</td></tr>
+      <tr><td>Every parameter range, ceiling and vendor admission</td><td><strong>Read from the documentation page named</strong>, on 2026-09-18, and dated on the page; these move and the date is part of the fact</td></tr>
+      <tr><td>The image the brief would produce</td><td><strong>Not judged.</strong> The bench measures the one input a person fully controls. A perfect brief can still make a bad picture, and a person with the six sentences decides that</td></tr>
+      <tr><td>"Model X renders text at Y percent accuracy"</td><td><strong>Not stated.</strong> The widely quoted comparison could not be verified and is excluded rather than repeated</td></tr>
+      <tr><td>Rights, indemnities, the cases, disclosure</td><td><strong>One card,</strong> two verbatim Copyright Office lines; everything else points at the owning courses</td></tr>
+      <tr><td>Daybreak's launch set</td><td>A teaching situation. The counting code is real</td></tr>
+    </table>
+  </section>
+
+  <section class="section mm-section">
+    <h2>The knowledge map 🧠</h2>
+    <p class="mm-lede">The whole course at a glance - hover a session to spotlight its concepts, click any node to jump in.</p>
+    <div class="mm-wrap"><div id="mindmap"></div></div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>learn-ai-illustration-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span>Source map, every constant and the bench's honest limits: <span class="mono">materials/official-course-map.md</span></span>
+  </footer>
+
+</main>
+
+<script>
+window.MINDMAP_DATA = {
+  title: "Learn\nAI Illustration",
+  centerColor: "#352B6B",
+  sessions: [
+    { label: "Where\ncontrol lives", href: "courses/01-where-control-lives.html", color: "#FBBF24",
+      concepts: [
+        { label: "Five layers, one a sentence", href: "courses/01-where-control-lives.html" },
+        { label: "Binds or persuades", href: "courses/01-where-control-lives.html" },
+        { label: "Date the version", href: "courses/01-where-control-lives.html" } ] },
+    { label: "Style DNA,\nwritten down", href: "courses/02-style-dna-written-down.html", color: "#FBBF24",
+      concepts: [
+        { label: "Six sentences", href: "courses/02-style-dna-written-down.html" },
+        { label: "What is absent", href: "courses/02-style-dna-written-down.html" },
+        { label: "Four files, one job each", href: "courses/02-style-dna-written-down.html" } ] },
+    { label: "Composition and\nthe type zone", href: "courses/03-composition-and-the-type-zone.html", color: "#FBBF24",
+      concepts: [
+        { label: "Six frames, six ratios", href: "courses/03-composition-and-the-type-zone.html" },
+        { label: "The empty third", href: "courses/03-composition-and-the-type-zone.html" },
+        { label: "Anchors, not adjectives", href: "courses/03-composition-and-the-type-zone.html" } ] },
+    { label: "The lettering\nlaw", href: "courses/04-the-lettering-law.html", color: "#F87171",
+      concepts: [
+        { label: "Tokens, not glyphs", href: "courses/04-the-lettering-law.html" },
+        { label: "11 characters fail", href: "courses/04-the-lettering-law.html" },
+        { label: "More style words, worse", href: "courses/04-the-lettering-law.html" } ] },
+    { label: "Consistency is\na pipeline", href: "courses/05-consistency-is-a-pipeline.html", color: "#FB923C",
+      concepts: [
+        { label: "Seed at 99%", href: "courses/05-consistency-is-a-pipeline.html" },
+        { label: "Four handles", href: "courses/05-consistency-is-a-pipeline.html" },
+        { label: "A person is a step", href: "courses/05-consistency-is-a-pipeline.html" } ] },
+    { label: "When it earns\nits place", href: "courses/06-when-it-earns-its-place.html", color: "#FB923C",
+      concepts: [
+        { label: "+19% and -31.5%", href: "courses/06-when-it-earns-its-place.html" },
+        { label: "Watermark erodes trust", href: "courses/06-when-it-earns-its-place.html" },
+        { label: "Final scorecard", href: "courses/06-when-it-earns-its-place.html" } ] }
+  ]
+};
+</script>
+<script src="assets/mindmap.js?v=1"></script>
+<script src="assets/app.js?v=1"></script>
+</body>
+</html>

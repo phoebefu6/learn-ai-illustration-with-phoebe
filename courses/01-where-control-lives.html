@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 1 of 6. The generation stack as a control surface: which settings bind the output, which merely persuade it, and what the vendors' own documentation admits about each. Art direction starts with knowing where the controls are.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Where control lives - learn AI illustration with phoebe">
+<meta property="og:description" content="Session 1 of 6. A prompt persuades. A ratio binds. A seed is 99 percent. Knowing which is which is the whole difference between prompting and art direction.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-ai-illustration-with-phoebe/courses/01-where-control-lives.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-ai-illustration-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Where control lives - learn AI illustration with phoebe">
+<meta name="twitter:description" content="Session 1 of 6. The generation stack as a control surface: what binds, what persuades, what the docs admit.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-ai-illustration-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 1 · Where control lives - learn AI illustration with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-illustration-with-phoebe</a> / Session 1 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI Illustration with Phoebe · Session 1 of 6</div>
+    <h1>Where <span class="accent">control lives</span></h1>
+    <p class="sub">Most people who make pictures with a model have one control: the sentence they type. When the picture is wrong they type a longer sentence. The stack has at least five layers of control, and the sentence is the one with the least grip. Tonight is a tour of the other four, read from the vendors' own documentation rather than from prompt guides: which settings bind the output, which only persuade it, and the exact wording each vendor uses to admit what its controls cannot do.</p>
+    <div class="chip-row">
+      <span class="chip level">🟠 Practitioners and leaders</span>
+      <span class="chip audience">Bring one prompt you have really used</span>
+      <span class="chip audience">No account needed</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · The stack, the knobs, the admissions</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: a control sheet for one asset</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">This course runs on one job. <strong>Daybreak</strong>, a coffee subscription company, is launching its autumn roast and needs six illustrations that look like one hand made them: an email hero, a landing-page header, three social tiles and the sleeve artwork. The sleeve carries an origin claim that legal signs, which is the first reason no lettering may come out of a model for this job. Every session moves those six assets one step closer to shipping.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A one-page control sheet for one of the six assets: the model and version with a date, the ratio, the reference handles, the seed and what it is worth, and a line naming what will be set by hand afterwards. Plus the vendor sentence that tells you why each control is only as strong as it is.</p>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Four neighbours, so you land in the right place.</strong> Copyright, indemnities, the court cases and provenance as a signature are <span class="mono">learn-ai-design-with-phoebe</span> a4. Disclosure duties and the EU dates are <span class="mono">learn-ai-media-with-phoebe</span> session 6. Constraint briefs for product UI are <span class="mono">learn-ai-design</span> b2 and b7. On-brand image recipes for marketing volume are <span class="mono">learn-ai-marketing</span> b8. Here the subject is illustration craft: the picture before the style, the type kept out, consistency as a system, and the judgement to say no.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers the stack</span>
+      <h2>Five layers, one of them a sentence</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Read the parameter list of any current image model and the controls sort themselves into layers. Some fix a property of the output outright. Some nudge it. One layer is words, and words nudge. Knowing which layer a problem lives in is the difference between fixing it and typing "more cinematic" for the fourth time.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Five horizontal layers of the generation stack from model and version at the top to hand finishing at the bottom, each tagged binds or persuades, with the prompt layer marked as the weakest grip">
+        <style>
+          .i1aH { font: 800 12.5px Inter, sans-serif; fill: #352B6B; }
+          .i1aT { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .i1aB { font: 400 11px Inter, sans-serif; fill: #1F1B33; }
+          .i1aW { font: 400 11px Inter, sans-serif; fill: #EFECF8; }
+          .i1aN { font: 400 11px Inter, sans-serif; fill: #625C7A; }
+          .i1aP { font: 800 10px Inter, sans-serif; fill: #FFFFFF; letter-spacing: .06em; }
+        </style>
+
+        <text class="i1aH" x="30" y="28">THE GENERATION STACK</text>
+        <text class="i1aN" x="30" y="46">read from the parameter lists, top layer decided first</text>
+
+        <rect x="30" y="62" width="620" height="54" rx="10" fill="#352B6B"/>
+        <text class="i1aT" x="48" y="84">1 · Model and version</text>
+        <text class="i1aW" x="48" y="103">which encoder, which defaults, which controls even exist; changes the answer to every other layer</text>
+        <rect x="670" y="76" width="82" height="24" rx="12" fill="#C2492F"/>
+        <text class="i1aP" x="711" y="92" text-anchor="middle">BINDS</text>
+
+        <rect x="30" y="126" width="620" height="54" rx="10" fill="#4C3F91"/>
+        <text class="i1aT" x="48" y="148">2 · Reference images</text>
+        <text class="i1aW" x="48" y="167">style refs, subject refs, composition refs, each with a weight; the picture the model copies from</text>
+        <rect x="670" y="140" width="82" height="24" rx="12" fill="#C2492F"/>
+        <text class="i1aP" x="711" y="156" text-anchor="middle">BINDS</text>
+        <text class="i1aN" x="764" y="156">by weight</text>
+
+        <rect x="30" y="190" width="620" height="54" rx="10" fill="#5F52A8"/>
+        <text class="i1aT" x="48" y="212">3 · Parameters</text>
+        <text class="i1aW" x="48" y="231">ratio, seed, stylize, chaos, quality; the ratio is exact, the seed is 99%, the rest are dials</text>
+        <rect x="670" y="204" width="82" height="24" rx="12" fill="#C2492F"/>
+        <text class="i1aP" x="711" y="220" text-anchor="middle">BINDS</text>
+        <text class="i1aN" x="764" y="220">mostly</text>
+
+        <rect x="30" y="254" width="620" height="54" rx="10" fill="#CBC5E8"/>
+        <text class="i1aH" x="48" y="276">4 · The prompt</text>
+        <text class="i1aB" x="48" y="295">subject, setting, light, palette, style words; every word is a suggestion the encoder weighs against the rest</text>
+        <rect x="670" y="268" width="104" height="24" rx="12" fill="#625C7A"/>
+        <text class="i1aP" x="722" y="284" text-anchor="middle">PERSUADES</text>
+
+        <rect x="30" y="318" width="620" height="54" rx="10" fill="#352B6B"/>
+        <text class="i1aT" x="48" y="340">5 · Hand finishing</text>
+        <text class="i1aW" x="48" y="359">crop, colour, composite, and every character of type set in HTML or SVG; the only layer that is exact</text>
+        <rect x="670" y="332" width="82" height="24" rx="12" fill="#C2492F"/>
+        <text class="i1aP" x="711" y="348" text-anchor="middle">BINDS</text>
+        <text class="i1aN" x="764" y="348">exactly</text>
+
+        <rect x="30" y="392" width="14" height="14" rx="3" fill="#C2492F"/>
+        <text class="i1aN" x="52" y="403">Most people work only in layer 4. It is the one layer where nothing you write is guaranteed to arrive.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the layers are decided top to bottom, and a problem is fixed in the layer it lives in, not by more words in layer 4</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Binds, persuades, and the test that tells them apart<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A control <strong>binds</strong> when the output cannot violate it. Ask for 3:2 and you get 3:2; the vendor's page even warns that "aspect ratio isn't the same as image dimensions", which is the sound of a control that is exact about one thing and silent about another. A control <strong>persuades</strong> when the output usually honours it and sometimes does not, with no error raised. Every word of a prompt is in that second category, because the text encoder turns the sentence into a weighting and the picture is a negotiation between all the weights at once.</p>
+        <p>The test: run it ten times. A binding control gives the same property ten times. A persuading control gives it seven or eight times and you will not know which two until you look. Layers 1, 3 and 5 pass the test. Layer 2 passes in proportion to its weight. Layer 4 does not, and it never will, because that is what an encoder is.</p>
+        <p>This is why "make it look like our brand every time" cannot be answered in layer 4. It is a question about layers 1, 2 and 5, and session 5 answers it there.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why the model version is layer 1, and how fast it moves<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The version decides which controls exist. On Midjourney the default became V8.2 on 24 July 2026, and that release folded Omni Reference, Character Reference and the Retexture tool into one Edit Model that takes up to four reference images. V8.1 had been the default only since 10 June; V7 before that since June 2025. Three defaults in fifteen months, and each one retired or renamed a control that prompt guides were still teaching. A brief written for V7 with <span class="mono">--oref</span> in it is talking to a parameter that the current parameter list marks "replaced by the Edit Model in V8.X".</p>
+        <p>The same is true across vendors. OpenAI's image models are named <span class="mono">gpt-image-2.5-sunburst</span> and <span class="mono">-flare</span> and the guide says which is for editing precision and which for speed. Google's are <span class="mono">gemini-3.1-flash-image</span> and <span class="mono">gemini-3-pro-image</span>, and the number of reference images each accepts is different (up to fourteen on the lightest, six object and five character and three style on the Pro). None of these names will be current for long. The professional habit is to put the model and version in a dated footnote on every control sheet and never in a headline, because the headline will be wrong within a quarter and the footnote will tell you why.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Daybreak's spring campaign was built on a saved prompt with a character reference flag in it. When the summer default changed, the flag stopped doing what it had done and nobody noticed for three assets, because a persuading layer does not throw an error. It just draws a slightly different mug. The fix was one line at the top of the brief: the model, the version and the date it was checked.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers the admissions</span>
+      <h2>What each control is documented to do, in the vendor's words</h2>
+      <span class="tag concept">6 min live</span>
+    </div>
+    <p class="lede">The most useful sentences in any vendor's documentation are the ones that say what a control cannot do. They are always there and never in the marketing. Six of them, one per control, read on 18 September 2026.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A ten-by-ten grid of one hundred small squares with one square shaded coral, illustrating that a seed reproduces ninety-nine percent identical output, beside three vendor admissions about seeds, consistency and text">
+        <style>
+          .i1bH { font: 800 12px Inter, sans-serif; fill: #352B6B; }
+          .i1bB { font: 400 11px Inter, sans-serif; fill: #1F1B33; }
+          .i1bN { font: 400 11px Inter, sans-serif; fill: #625C7A; }
+          .i1bQ { font: 400 11px Inter, sans-serif; fill: #1F1B33; font-style: italic; }
+          .i1bS { font: 800 11px Inter, sans-serif; fill: #8A3220; }
+          .i1bG { fill: #EFECF8; stroke: #D6D2E6; stroke-width: 0.8; }
+        </style>
+
+        <text class="i1bH" x="30" y="28">"(99% IDENTICAL)"</text>
+        <text class="i1bN" x="30" y="46">the seed parameter on V8.1 and V8.2, from the compatibility chart</text>
+        <g>
+          <rect class="i1bG" x="30" y="62" width="22" height="22"/><rect class="i1bG" x="54" y="62" width="22" height="22"/><rect class="i1bG" x="78" y="62" width="22" height="22"/><rect class="i1bG" x="102" y="62" width="22" height="22"/><rect class="i1bG" x="126" y="62" width="22" height="22"/><rect class="i1bG" x="150" y="62" width="22" height="22"/><rect class="i1bG" x="174" y="62" width="22" height="22"/><rect class="i1bG" x="198" y="62" width="22" height="22"/><rect class="i1bG" x="222" y="62" width="22" height="22"/><rect class="i1bG" x="246" y="62" width="22" height="22"/>
+          <rect class="i1bG" x="30" y="86" width="22" height="22"/><rect class="i1bG" x="54" y="86" width="22" height="22"/><rect class="i1bG" x="78" y="86" width="22" height="22"/><rect class="i1bG" x="102" y="86" width="22" height="22"/><rect class="i1bG" x="126" y="86" width="22" height="22"/><rect class="i1bG" x="150" y="86" width="22" height="22"/><rect class="i1bG" x="174" y="86" width="22" height="22"/><rect class="i1bG" x="198" y="86" width="22" height="22"/><rect class="i1bG" x="222" y="86" width="22" height="22"/><rect class="i1bG" x="246" y="86" width="22" height="22"/>
+          <rect class="i1bG" x="30" y="110" width="22" height="22"/><rect class="i1bG" x="54" y="110" width="22" height="22"/><rect class="i1bG" x="78" y="110" width="22" height="22"/><rect class="i1bG" x="102" y="110" width="22" height="22"/><rect class="i1bG" x="126" y="110" width="22" height="22"/><rect class="i1bG" x="150" y="110" width="22" height="22"/><rect class="i1bG" x="174" y="110" width="22" height="22"/><rect class="i1bG" x="198" y="110" width="22" height="22"/><rect class="i1bG" x="222" y="110" width="22" height="22"/><rect class="i1bG" x="246" y="110" width="22" height="22"/>
+          <rect class="i1bG" x="30" y="134" width="22" height="22"/><rect class="i1bG" x="54" y="134" width="22" height="22"/><rect class="i1bG" x="78" y="134" width="22" height="22"/><rect class="i1bG" x="102" y="134" width="22" height="22"/><rect class="i1bG" x="126" y="134" width="22" height="22"/><rect class="i1bG" x="150" y="134" width="22" height="22"/><rect class="i1bG" x="174" y="134" width="22" height="22"/><rect class="i1bG" x="198" y="134" width="22" height="22"/><rect class="i1bG" x="222" y="134" width="22" height="22"/><rect class="i1bG" x="246" y="134" width="22" height="22"/>
+          <rect class="i1bG" x="30" y="158" width="22" height="22"/><rect class="i1bG" x="54" y="158" width="22" height="22"/><rect class="i1bG" x="78" y="158" width="22" height="22"/><rect class="i1bG" x="102" y="158" width="22" height="22"/><rect class="i1bG" x="126" y="158" width="22" height="22"/><rect class="i1bG" x="150" y="158" width="22" height="22"/><rect class="i1bG" x="174" y="158" width="22" height="22"/><rect class="i1bG" x="198" y="158" width="22" height="22"/><rect class="i1bG" x="222" y="158" width="22" height="22"/><rect class="i1bG" x="246" y="158" width="22" height="22"/>
+          <rect class="i1bG" x="30" y="182" width="22" height="22"/><rect class="i1bG" x="54" y="182" width="22" height="22"/><rect class="i1bG" x="78" y="182" width="22" height="22"/><rect class="i1bG" x="102" y="182" width="22" height="22"/><rect class="i1bG" x="126" y="182" width="22" height="22"/><rect class="i1bG" x="150" y="182" width="22" height="22"/><rect class="i1bG" x="174" y="182" width="22" height="22"/><rect class="i1bG" x="198" y="182" width="22" height="22"/><rect class="i1bG" x="222" y="182" width="22" height="22"/><rect class="i1bG" x="246" y="182" width="22" height="22"/>
+          <rect class="i1bG" x="30" y="206" width="22" height="22"/><rect class="i1bG" x="54" y="206" width="22" height="22"/><rect class="i1bG" x="78" y="206" width="22" height="22"/><rect class="i1bG" x="102" y="206" width="22" height="22"/><rect class="i1bG" x="126" y="206" width="22" height="22"/><rect class="i1bG" x="150" y="206" width="22" height="22"/><rect class="i1bG" x="174" y="206" width="22" height="22"/><rect class="i1bG" x="198" y="206" width="22" height="22"/><rect class="i1bG" x="222" y="206" width="22" height="22"/><rect class="i1bG" x="246" y="206" width="22" height="22"/>
+          <rect class="i1bG" x="30" y="230" width="22" height="22"/><rect class="i1bG" x="54" y="230" width="22" height="22"/><rect class="i1bG" x="78" y="230" width="22" height="22"/><rect class="i1bG" x="102" y="230" width="22" height="22"/><rect class="i1bG" x="126" y="230" width="22" height="22"/><rect class="i1bG" x="150" y="230" width="22" height="22"/><rect class="i1bG" x="174" y="230" width="22" height="22"/><rect class="i1bG" x="198" y="230" width="22" height="22"/><rect class="i1bG" x="222" y="230" width="22" height="22"/><rect class="i1bG" x="246" y="230" width="22" height="22"/>
+          <rect class="i1bG" x="30" y="254" width="22" height="22"/><rect class="i1bG" x="54" y="254" width="22" height="22"/><rect class="i1bG" x="78" y="254" width="22" height="22"/><rect class="i1bG" x="102" y="254" width="22" height="22"/><rect class="i1bG" x="126" y="254" width="22" height="22"/><rect class="i1bG" x="150" y="254" width="22" height="22"/><rect class="i1bG" x="174" y="254" width="22" height="22"/><rect class="i1bG" x="198" y="254" width="22" height="22"/><rect class="i1bG" x="222" y="254" width="22" height="22"/><rect class="i1bG" x="246" y="254" width="22" height="22"/>
+          <rect class="i1bG" x="30" y="278" width="22" height="22"/><rect class="i1bG" x="54" y="278" width="22" height="22"/><rect class="i1bG" x="78" y="278" width="22" height="22"/><rect class="i1bG" x="102" y="278" width="22" height="22"/><rect class="i1bG" x="126" y="278" width="22" height="22"/><rect class="i1bG" x="150" y="278" width="22" height="22"/><rect class="i1bG" x="174" y="278" width="22" height="22"/><rect class="i1bG" x="198" y="278" width="22" height="22"/><rect class="i1bG" x="222" y="278" width="22" height="22"/><rect x="246" y="278" width="22" height="22" fill="#C2492F"/>
+        </g>
+        <text class="i1bS" x="30" y="326">one asset in a hundred is not the mug you approved</text>
+        <text class="i1bN" x="30" y="344">and across six assets and four revisions each,</text>
+        <text class="i1bN" x="30" y="360">that is not a rounding error</text>
+
+        <rect x="310" y="62" width="546" height="90" rx="10" fill="#FFFFFF" stroke="#E3DFEF"/>
+        <text class="i1bH" x="328" y="86">OpenAI, image generation guide</text>
+        <text class="i1bQ" x="328" y="108">"may occasionally struggle to maintain visual consistency</text>
+        <text class="i1bQ" x="328" y="124">for recurring characters or brand elements across multiple generations"</text>
+        <text class="i1bN" x="328" y="142">the consistency gap, documented by the vendor</text>
+
+        <rect x="310" y="164" width="546" height="90" rx="10" fill="#FFFFFF" stroke="#E3DFEF"/>
+        <text class="i1bH" x="328" y="188">Midjourney, Style Reference page</text>
+        <text class="i1bQ" x="328" y="210">"--sw ... any value between 0 and 1000, with the default being --sw 100"</text>
+        <text class="i1bQ" x="328" y="226">and: "You cannot create a style code based on an uploaded image."</text>
+        <text class="i1bN" x="328" y="244">a binding control with a stated ceiling on what it binds</text>
+
+        <rect x="310" y="266" width="546" height="90" rx="10" fill="#FFFFFF" stroke="#E3DFEF"/>
+        <text class="i1bH" x="328" y="290">Ideogram, text and typography page</text>
+        <text class="i1bQ" x="328" y="312">"consider using Ideogram to generate the visual concept and then</text>
+        <text class="i1bQ" x="328" y="328">add the text manually using graphic editing tools afterward."</text>
+        <text class="i1bN" x="328" y="346">the vendor whose whole pitch is type, recommending you set it yourself</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - three vendors, three admissions, all in the documentation and none in the launch post</figcaption>
+    </figure>
+
+    <table class="clean">
+      <tr><th>Control</th><th>Documented range</th><th>The vendor's own limit</th><th>Layer</th></tr>
+      <tr><td>Aspect ratio <span class="mono">--ar</span></td><td>up to 14:1 on V8.x (4:1 for HD)</td><td>"Aspect ratio isn't the same as image dimensions"</td><td>3, binds</td></tr>
+      <tr><td>Seed <span class="mono">--seed</span></td><td>any integer</td><td>"(99% identical)" on V8.1 and V8.2</td><td>3, binds at 99%</td></tr>
+      <tr><td>Style reference <span class="mono">--sref</span> + <span class="mono">--sw</span></td><td>weight 0 to 1000, default 100, V6 and later</td><td>Style only, "not objects or people"; no code from an uploaded image</td><td>2, binds by weight</td></tr>
+      <tr><td>Edit Model (V8.1+)</td><td>up to 4 reference images</td><td>Not compatible with <span class="mono">--tile</span>; combine characters into one image when features mix</td><td>2, binds by weight</td></tr>
+      <tr><td>Omni reference <span class="mono">--oref</span> (V7 only)</td><td><span class="mono">--ow</span> 1 to 1000, default 100</td><td>One image; 2x GPU time; keep below 400 unless stylize is very high</td><td>2, retired in V8</td></tr>
+      <tr><td>Output size (OpenAI)</td><td>1024 square, 1536x1024, 1024x1536, or multiples of 16 between 1:3 and 3:1</td><td>"can still struggle with precise text placement and clarity"</td><td>3, binds</td></tr>
+      <tr><td>The prompt</td><td>any words</td><td>every vendor: none of the above is promised by words alone</td><td>4, persuades</td></tr>
+    </table>
+    <p class="mono" style="margin-top:8px;font-size:.8rem;color:var(--muted)">Read 2026-09-18 from docs.midjourney.com (Version, Parameter List, Style Reference, Edit Model, Omni Reference, Aspect Ratio), developers.openai.com and docs.ideogram.ai. Every one of these moves; the date is part of the fact.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Reading a parameter page like a contract<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Three habits turn a docs page into a control sheet. <strong>Find the range.</strong> A control with a stated range (0 to 1000, up to 4 images, 14:1) binds within it; a control described only in adjectives persuades. <strong>Find the parenthesis.</strong> The most important fact on Midjourney's version chart is two words in brackets after the word Seed, and they are the reason session 5 exists. <strong>Find the "cannot".</strong> Every page has one: cannot make a code from an upload, not compatible with tile, may struggle with text placement. The cannot is the boundary of the control, and it is always more specific than the can.</p>
+        <p>The fourth habit is the one people skip: <strong>write down the date you read it.</strong> Three defaults in fifteen months means a control sheet without a date is a control sheet about a model that may no longer exist.</p>
+      </div>
+    </details>
+
+    <div class="tryrow" data-fn="wordcount" data-multiline="1" data-title="Sort your own prompt into layers" data-hint="Paste a prompt you have really used. Then, on a new line each, write which of its words are layer 3 (a ratio, a seed, a flag), which are layer 2 (a reference), and which are layer 4 (everything else). Most prompts are ninety percent layer 4." data-seed="A beautiful coffee illustration, autumn vibes, trending on artstation, masterpiece, highly detailed, 8k, stunning --ar 3:2" data-cta="Count it"></div>
+
+    <p>The seeded prompt has one binding control, the ratio at the end, and fourteen words of persuasion. Seven of the fourteen are about quality and none of them names an object, a light or a colour. Session 4's bench will count exactly that.</p>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers the six assets</span>
+      <h2>Daybreak's launch set, as a control problem</h2>
+      <span class="tag concept">4 min live</span>
+    </div>
+    <p class="lede">Six pictures that must look like one hand made them, delivered across an email, a web page, three square tiles and a printed sleeve. Written as a control problem, the six assets share three layers and differ in two, and the sharing is what makes them a set.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six asset tiles for Daybreak's autumn roast launch in a row, each with its ratio and destination, above a shared band listing the controls all six hold in common: model and version, reference kit, palette, and hand-set type">
+        <style>
+          .i1cH { font: 800 12px Inter, sans-serif; fill: #352B6B; }
+          .i1cT { font: 800 11px Inter, sans-serif; fill: #FFFFFF; }
+          .i1cB { font: 400 10.5px Inter, sans-serif; fill: #1F1B33; }
+          .i1cW { font: 400 10.5px Inter, sans-serif; fill: #EFECF8; }
+          .i1cN { font: 400 11px Inter, sans-serif; fill: #625C7A; }
+          .i1cZ { fill: #F9E6E1; stroke: #C2492F; stroke-width: 1; stroke-dasharray: 3 2; }
+        </style>
+
+        <text class="i1cH" x="30" y="28">SIX ASSETS, TWO LAYERS THAT DIFFER</text>
+        <text class="i1cN" x="30" y="46">ratio and destination change; everything below the line is shared</text>
+
+        <rect x="30" y="62" width="128" height="86" rx="9" fill="#4C3F91"/>
+        <rect class="i1cZ" x="38" y="70" width="112" height="22"/>
+        <text class="i1cT" x="94" y="118" text-anchor="middle">Email hero</text>
+        <text class="i1cW" x="94" y="136" text-anchor="middle">3:2 · type zone top</text>
+
+        <rect x="170" y="62" width="128" height="86" rx="9" fill="#4C3F91"/>
+        <rect class="i1cZ" x="178" y="70" width="34" height="70"/>
+        <text class="i1cT" x="256" y="112" text-anchor="middle">Page header</text>
+        <text class="i1cW" x="256" y="130" text-anchor="middle">21:9 · zone left</text>
+
+        <rect x="310" y="62" width="86" height="86" rx="9" fill="#5F52A8"/>
+        <rect class="i1cZ" x="318" y="118" width="70" height="22"/>
+        <text class="i1cT" x="353" y="88" text-anchor="middle">Tile 1</text>
+        <text class="i1cW" x="353" y="106" text-anchor="middle">1:1</text>
+
+        <rect x="408" y="62" width="86" height="86" rx="9" fill="#5F52A8"/>
+        <rect class="i1cZ" x="416" y="118" width="70" height="22"/>
+        <text class="i1cT" x="451" y="88" text-anchor="middle">Tile 2</text>
+        <text class="i1cW" x="451" y="106" text-anchor="middle">1:1</text>
+
+        <rect x="506" y="62" width="86" height="86" rx="9" fill="#5F52A8"/>
+        <rect class="i1cZ" x="514" y="118" width="70" height="22"/>
+        <text class="i1cT" x="549" y="88" text-anchor="middle">Tile 3</text>
+        <text class="i1cW" x="549" y="106" text-anchor="middle">1:1</text>
+
+        <rect x="604" y="62" width="128" height="86" rx="9" fill="#C2492F"/>
+        <rect class="i1cZ" x="612" y="70" width="112" height="30"/>
+        <text class="i1cT" x="668" y="122" text-anchor="middle">Sleeve</text>
+        <text class="i1cW" x="668" y="140" text-anchor="middle">print · legal signs</text>
+
+        <text class="i1cN" x="748" y="100">dashed =</text>
+        <text class="i1cN" x="748" y="116">type zone,</text>
+        <text class="i1cN" x="748" y="132">hand-set later</text>
+
+        <line x1="30" y1="166" x2="850" y2="166" stroke="#D6D2E6" stroke-width="1.5"/>
+
+        <rect x="30" y="182" width="820" height="34" rx="8" fill="#EFECF8"/>
+        <text class="i1cB" x="46" y="204"><tspan font-weight="800">Layer 1 · </tspan>one model and version, dated, for the whole set. Nothing regenerated after a default changes without a re-check.</text>
+        <rect x="30" y="224" width="820" height="34" rx="8" fill="#EFECF8"/>
+        <text class="i1cB" x="46" y="246"><tspan font-weight="800">Layer 2 · </tspan>one reference kit: the approved mug, counter and light, as a style reference at a recorded weight.</text>
+        <rect x="30" y="266" width="820" height="34" rx="8" fill="#EFECF8"/>
+        <text class="i1cB" x="46" y="288"><tspan font-weight="800">Layer 5 · </tspan>every character of type set by hand in the layout. The sleeve's origin claim never passes through the model.</text>
+
+        <rect x="30" y="316" width="14" height="14" rx="3" fill="#C2492F"/>
+        <text class="i1cN" x="52" y="327">A set is six pictures that share layers 1, 2 and 5. Six good pictures that do not share them are six good pictures.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the dashed rectangles are empty on purpose; they are where the words will go, and the words are not the model's job</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>What a set is, in one sentence<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A set is six pictures that share their binding layers. Same model and version, same reference kit at the same weight, same palette named in words, same rule that type is set afterwards. What differs is the ratio and the destination, and both of those are binding controls too, so nothing about the set depends on a persuading layer holding. The prompt for each asset is then short, because the picture has already been decided three layers up.</p>
+        <p>The sleeve is the asset that makes the rule non-negotiable. It carries an origin claim that legal has signed off word by word. A model that spells it wrong once in a hundred has spelled it wrong once, on a printed bag, with a lawyer's name on the approval. That is why layer 5 is where the words live, and session 4 is the whole mechanism behind it.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why the leaders' question and the practitioners' question are the same question<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A head of marketing asks "can we make it look like us every time?" A designer asks "which flag do I use for consistency?" They are asking about the same layer. The honest answer to both is that no vendor sells identity-level repeatability as a feature; two of them document the gap in their own guides, and the third puts "(99% identical)" in brackets next to the control everyone assumes is exact. The answer is a pipeline, and the pipeline is a leadership decision about what gets locked and a practitioner's discipline about what gets recorded. Session 5 is that pipeline. Tonight's control sheet is its first page.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>When Daybreak's designer was asked why tile 3 looked "a bit off", she opened the control sheet and read the date: the sheet said V8.1, the tile had been regenerated in the week V8.2 became the default. Same prompt, same seed, same references, different encoder. The sheet did not prevent the drift. It made the cause a fact instead of an argument.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>A control sheet for one asset</h2>
+      <span class="tag demo">★ 22 min · everyone writes</span>
+    </div>
+    <p class="lede">Pick one of the six, or one asset from your own work. One page, five layers, one line each, and the rule for the whole exercise: <strong>every line names a control you can point at in a docs page, with the date you read it.</strong> The prompt itself is the last line and the shortest.</p>
+
+    <div class="tick" data-stages="Layer 1: name and date|Layer 2: references|Layer 3: the binding numbers|Layer 5: what is hand-set|Layer 4: the prompt, last" data-title="Five passes, about four minutes each" data-foot="The prompt is written last on purpose. By the time you reach it, the picture is decided and the prompt only has to describe it. A prompt written first tries to do the job of four other layers with adjectives.">
+      <p class="tick-note" data-stage="0"><b>Layer 1: name and date.</b> The model, the version, the date you checked the version page. If you cannot find a version page, write that down too; it is a fact about the tool.</p>
+      <p class="tick-note" data-stage="1"><b>Layer 2: references.</b> Which images the model copies from, what kind of reference each is (style, subject, composition), and the weight. If you have no references yet, write "none, so consistency is unmanaged" and underline it.</p>
+      <p class="tick-note" data-stage="2"><b>Layer 3: the binding numbers.</b> Ratio. Seed, with "99%" written next to it. Any flag with a stated range, and the range. Nothing described in adjectives goes on this line.</p>
+      <p class="tick-note" data-stage="3"><b>Layer 5: what is hand-set.</b> Every word that will appear in the finished asset, and the sentence "set in HTML or SVG after generation, not requested from the model." For the sleeve, add who signs the words.</p>
+      <p class="tick-note" data-stage="4"><b>Layer 4: the prompt, last.</b> Subject, setting, light, palette, one style. Under forty words. If it is longer, something from layers 1 to 3 has leaked into it as an adjective.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step"><p><strong>Head the page with the asset's job</strong>, not its name: "email hero, first thing a subscriber sees, 3:2, headline set over the top third." The job decides the ratio and the zone before anything is generated.</p></div>
+      <div class="step"><p><strong>Open the vendor's version page and copy the default version and its date</strong> into layer 1. Do not write it from memory; the point of the exercise is that memory is what drifts.</p></div>
+      <div class="step"><p><strong>List the references you actually have.</strong> A moodboard is not a reference kit. A reference kit is named files with a purpose each, and session 2 builds one.</p></div>
+      <div class="step"><p><strong>Write the ratio and the seed</strong>, and next to the seed write what the docs say it is worth. On the current default that is two words in brackets.</p></div>
+      <div class="step"><p><strong>Draw the type zone</strong> as a dashed rectangle on a thumbnail of the asset, and write the words that will go in it. Those words never enter the prompt.</p></div>
+      <div class="step"><p><strong>Now write the prompt</strong>, and count its words. Bring the count, and the number of words in it that name a colour, a light or an object, to session 4.</p></div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>If you take one thing from tonight.</strong> The prompt is not the work. The prompt is the last and weakest of five controls, and art direction is the other four. A control sheet with a dated version, a reference kit, a recorded seed and a type zone has done more than a hundred prompt revisions.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before session 2</h2>
+      <span class="tag exercise">25 min</span>
+    </div>
+    <ol>
+      <li><strong>Finish the control sheet</strong> for one real asset from your own work, all five layers, with dates. Keep it; session 5 adds a column to it.</li>
+      <li><strong>Read one vendor's parameter page end to end</strong> and write down every "cannot", "not compatible" and parenthesis you find. Most people find five or more they had never seen.</li>
+      <li><strong>Collect five images that look like your brand</strong>, from anywhere, and for each write one sentence on what makes it look that way: a colour, a line weight, a light, a texture. Session 2 turns those sentences into style DNA.</li>
+      <li><strong>Sort your last three prompts into layers.</strong> Count the layer 4 words. Write one sentence on what you were trying to make a persuading layer do that a binding layer should have done.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 1 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · A designer regenerates an approved asset with the same prompt and the same seed and it comes back slightly different. What happened, most likely?</p>
+      <button class="qopt" type="button">A · The prompt was too short</button>
+      <button class="qopt" type="button">B · Seeds do not work on illustrations</button>
+      <button class="qopt" type="button">C · The seed is documented as "(99% identical)" on the current default, and a version change between the two runs would move it further; a seed is a binding control with a stated ceiling, not an exact one</button>
+      <button class="qopt" type="button">D · The stylize value should have been higher</button>
+      <p class="qwhy">The compatibility chart says it in two words. A seed on V8.1 and V8.2 reproduces at ninety-nine percent, and if the default moved between runs the encoder itself changed. Neither is fixed by more words in layer 4. The control sheet's date is how you tell which one it was.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · Which of these is a binding control, and which persuades?</p>
+      <button class="qopt" type="button">A · Binding: a ratio, a style reference at a stated weight, a version. Persuading: every word of the prompt, because the encoder weighs words against each other and none is guaranteed to arrive</button>
+      <button class="qopt" type="button">B · Everything in the prompt binds if you write it in capitals</button>
+      <button class="qopt" type="button">C · Nothing binds; generation is random</button>
+      <button class="qopt" type="button">D · Only the seed binds</button>
+      <p class="qwhy">The test is ten runs. A ratio gives the same ratio ten times. A reference at weight 100 gives its style in proportion. The word "amber" gives amber most of the time, and the two times it does not, nothing tells you. That is what a text encoder is, and it is why the type is set by hand.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">3 · Why does a control sheet carry a date on the model version?</p>
+      <button class="qopt" type="button">A · For the invoice</button>
+      <button class="qopt" type="button">B · Because the default has changed three times in fifteen months, each change retired or renamed controls, and a persuading layer does not raise an error when the encoder under it moves; the date turns a drift into a diagnosable fact</button>
+      <button class="qopt" type="button">C · Because older versions are always better</button>
+      <button class="qopt" type="button">D · It does not need one; the version is in the file name</button>
+      <p class="qwhy">V7 to V8.1 to V8.2 inside fifteen months, with Omni Reference and Character Reference folded into an Edit Model along the way. A brief that says "--oref" is talking to a retired control and the model will not tell you. The sheet's date is the only way to know which model made which asset.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Midjourney Version page</span><span class="note">V8.2 default from 2026-07-24; the Edit Model replacing three controls; the "(99% identical)" seed note; 14:1 ratio ceiling</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Midjourney Parameter List, Style Reference, Edit Model, Omni Reference, Aspect Ratio</span><span class="note">Ranges and every "cannot" quoted; read 2026-09-18</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">OpenAI image generation guide</span><span class="note">Model names, size constraints, the consistency and text-placement limitations, verbatim</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Google Gemini image docs</span><span class="note">Model names and per-model reference ceilings</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Ideogram text and typography page</span><span class="note">The "add the text manually afterward" recommendation, verbatim</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Adobe Firefly reference controls</span><span class="note">Composition and style Strength sliders named; commercial-safety wording not verified from source and not stated</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Rights, provenance, disclosure</span><span class="note">Owned by learn-ai-design a4 and learn-ai-media 06; one card in session 5</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Full source map with verification tiers: <span class="mono">materials/official-course-map.md</span>.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 1 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Five layers</b><span>Version, references, parameters, prompt, hand finishing. The prompt is fourth.</span></div>
+      <div class="cheat-item"><b>Binds or persuades</b><span>Run it ten times. Same property ten times is a binding control.</span></div>
+      <div class="cheat-item"><b>99%</b><span>The seed's documented worth. Write it next to the seed every time.</span></div>
+      <div class="cheat-item"><b>Read the cannot</b><span>Every docs page has one. It is the boundary of the control.</span></div>
+      <div class="cheat-item"><b>Date the version</b><span>Three defaults in fifteen months. An undated sheet describes a model that may be gone.</span></div>
+      <div class="cheat-item"><b>A set shares layers</b><span>Same version, same kit, same hand-set type. Ratio and destination differ.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>Your control sheet has a layer 2 line that probably says "none yet". Session 2 fills it: style written down in words that outlive the person who wrote them, and the reference kit that turns "looks like us" from an opinion into files with names. Bring the five images and the five sentences.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 1 of 6 · learn-ai-illustration-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="../index.html">← Course home</a> &nbsp;·&nbsp; <a href="02-style-dna-written-down.html">Next: Style DNA, written down →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>
